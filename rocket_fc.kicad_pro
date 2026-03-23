@@ -1,0 +1,78 @@
+(kicad_pro
+  (version 1)
+  (defaults
+    (board
+      (default_copper_layers 4)
+      (default_board_thickness 1.6)
+    )
+  )
+  (meta
+    (filename "rocket_fc.kicad_pro")
+  )
+  (net_settings
+    (classes
+      (netclass
+        (name "Default")
+        (clearance 0.2)
+        (track_width 0.25)
+        (via_dia 0.8)
+        (via_drill 0.4)
+      )
+      (netclass
+        (name "Power_3V3")
+        (clearance 0.25)
+        (track_width 1.0)
+        (via_dia 1.0)
+        (via_drill 0.5)
+        (nets "+3.3V")
+      )
+      (netclass
+        (name "Power_5V")
+        (clearance 0.25)
+        (track_width 1.5)
+        (via_dia 1.2)
+        (via_drill 0.6)
+        (nets "+5V" "+5V_SERVO")
+      )
+      (netclass
+        (name "Pyro_High_Current")
+        (clearance 1.27)
+        (track_width 2.5)
+        (via_dia 2.0)
+        (via_drill 1.0)
+        (nets "PYRO_BUS_P" "PYRO_A_DRAIN" "PYRO_B_DRAIN" "VBAT_PROTECTED" "VBAT_SWITCHED" "VBAT_RAW")
+      )
+      (netclass
+        (name "SPI_Bus")
+        (clearance 0.2)
+        (track_width 0.3)
+        (via_dia 0.8)
+        (via_drill 0.4)
+        (nets "SPI_SCK" "SPI_MOSI" "SPI_MISO" "LORA_CS" "SD_CS" "SPI_SCK_DAMP" "SPI_MOSI_DAMP")
+      )
+      (netclass
+        (name "I2C_Bus")
+        (clearance 0.2)
+        (track_width 0.25)
+        (via_dia 0.8)
+        (via_drill 0.4)
+        (nets "I2C_SDA" "I2C_SCL")
+      )
+    )
+  )
+  (schematic
+    (drawing
+      (default_line_thickness 6)
+      (default_text_size 50)
+      (field_names)
+    )
+    (legacy_lib_dir "")
+    (legacy_lib_list)
+  )
+  (pcbnew
+    (last_paths
+      (gerbdir "gerbers/")
+    )
+    (page_layout_descr_file "")
+  )
+)

@@ -1,0 +1,681 @@
+(kicad_schematic
+  (version 20231120)
+  (generator "claude-kicad-gen")
+  (generator_version "1.0")
+  (paper "A1")
+  (title_block
+    (title "Rocket Flight Computer")
+    (rev "1.0")
+    (company "Open Rocketry")
+    (comment 1 "ESP32-WROOM-32D based avionics")
+    (comment 2 "2S LiPo, LoRa, GPS, IMU, Baro, Pyro x2, Servo x4")
+    (comment 3 "See design notes for boot pin constraints")
+    (comment 4 "All values in Ohms/Farads/Henries unless noted")
+  )
+  (lib_symbols
+    (symbol "ESP32_WROOM_32D"
+      (pin_names (offset 1.016))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "ESP32-WROOM-32D" (at 0 0 0) (effects (font (size 1.27 1.27))))
+      (symbol "ESP32_WROOM_32D_0_1"
+        (rectangle (start -10.16 -25.4) (end 10.16 25.4) (stroke (width 0.254)) (fill (type background)))
+        (pin power_in at -12.7 22.86 0 (length 2.54) (name "GND" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+        (pin power_in at -12.7 20.32 0 (length 2.54) (name "3V3" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+        (pin input at -12.7 17.78 0 (length 2.54) (name "EN" (effects (font (size 1.016 1.016)))) (number "3" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at -12.7 15.24 0 (length 2.54) (name "GPIO36/SVP" (effects (font (size 1.016 1.016)))) (number "4" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at -12.7 12.7 0 (length 2.54) (name "GPIO39/SVN" (effects (font (size 1.016 1.016)))) (number "5" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at -12.7 10.16 0 (length 2.54) (name "GPIO34" (effects (font (size 1.016 1.016)))) (number "6" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at -12.7 7.62 0 (length 2.54) (name "GPIO35" (effects (font (size 1.016 1.016)))) (number "7" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at -12.7 5.08 0 (length 2.54) (name "GPIO32" (effects (font (size 1.016 1.016)))) (number "8" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at -12.7 2.54 0 (length 2.54) (name "GPIO33" (effects (font (size 1.016 1.016)))) (number "9" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at -12.7 0 0 (length 2.54) (name "GPIO25" (effects (font (size 1.016 1.016)))) (number "10" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at -12.7 -2.54 0 (length 2.54) (name "GPIO26" (effects (font (size 1.016 1.016)))) (number "11" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at -12.7 -5.08 0 (length 2.54) (name "GPIO27" (effects (font (size 1.016 1.016)))) (number "12" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at -12.7 -7.62 0 (length 2.54) (name "GPIO14" (effects (font (size 1.016 1.016)))) (number "13" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at -12.7 -10.16 0 (length 2.54) (name "GPIO12" (effects (font (size 1.016 1.016)))) (number "14" (effects (font (size 1.016 1.016)))))
+        (pin power_in at -12.7 -12.7 0 (length 2.54) (name "GND" (effects (font (size 1.016 1.016)))) (number "15" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at 12.7 22.86 180 (length 2.54) (name "GPIO13" (effects (font (size 1.016 1.016)))) (number "16" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at 12.7 20.32 180 (length 2.54) (name "GPIO15/MTDO" (effects (font (size 1.016 1.016)))) (number "23" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at 12.7 17.78 180 (length 2.54) (name "GPIO2" (effects (font (size 1.016 1.016)))) (number "24" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at 12.7 15.24 180 (length 2.54) (name "GPIO0" (effects (font (size 1.016 1.016)))) (number "25" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at 12.7 12.7 180 (length 2.54) (name "GPIO4" (effects (font (size 1.016 1.016)))) (number "26" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at 12.7 10.16 180 (length 2.54) (name "GPIO16/UART2_RX" (effects (font (size 1.016 1.016)))) (number "27" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at 12.7 7.62 180 (length 2.54) (name "GPIO17/UART2_TX" (effects (font (size 1.016 1.016)))) (number "28" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at 12.7 5.08 180 (length 2.54) (name "GPIO5/SPI_CS0" (effects (font (size 1.016 1.016)))) (number "29" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at 12.7 2.54 180 (length 2.54) (name "GPIO18/SPI_CLK" (effects (font (size 1.016 1.016)))) (number "30" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at 12.7 0 180 (length 2.54) (name "GPIO19/SPI_MISO" (effects (font (size 1.016 1.016)))) (number "31" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at 12.7 -2.54 180 (length 2.54) (name "GPIO21/I2C_SDA" (effects (font (size 1.016 1.016)))) (number "33" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at 12.7 -5.08 180 (length 2.54) (name "GPIO22/I2C_SCL" (effects (font (size 1.016 1.016)))) (number "36" (effects (font (size 1.016 1.016)))))
+        (pin bidirectional at 12.7 -7.62 180 (length 2.54) (name "GPIO23/SPI_MOSI" (effects (font (size 1.016 1.016)))) (number "37" (effects (font (size 1.016 1.016)))))
+        (pin output at 12.7 -10.16 180 (length 2.54) (name "GPIO1/UART0_TX" (effects (font (size 1.016 1.016)))) (number "35" (effects (font (size 1.016 1.016)))))
+        (pin input at 12.7 -12.7 180 (length 2.54) (name "GPIO3/UART0_RX" (effects (font (size 1.016 1.016)))) (number "34" (effects (font (size 1.016 1.016)))))
+        (pin power_in at 12.7 -15.24 180 (length 2.54) (name "GND" (effects (font (size 1.016 1.016)))) (number "38" (effects (font (size 1.016 1.016)))))
+      )
+    )
+  )
+
+  (junction (at 100 50))
+  (junction (at 100 60))
+  (junction (at 150 100))
+  (junction (at 200 100))
+
+  (no_connect (at 50 280))
+
+  (bus_entry (at 60 40) (size 2.54 2.54))
+
+  (polyline
+    (pts (xy 10 10) (xy 380 10) (xy 380 280) (xy 10 280) (xy 10 10))
+    (stroke (width 0.254) (type default))
+    (fill (type none))
+  )
+
+  (text "POWER SYSTEM" (at 15 15 0) (effects (font (size 2 2) (bold yes))))
+  (text "NOTE: Arming switch SW1 must be closed before pyro channels can fire.\nGate pull-downs R7/R8 ensure safe state at power-on.\nNever omit these resistors." (at 10 285 0)
+    (effects (font (size 1.27 1.27)) (justify left)))
+
+  ; ---- POWER DOMAIN SYMBOLS ----
+
+  (symbol (lib_id "power:PWR_FLAG") (at 20 20 0) (unit 1)
+    (property "Reference" "#PWR01" (at 20 18 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Value" "VBAT" (at 20 22 0) (effects (font (size 1.27 1.27))))
+  )
+
+  (symbol (lib_id "power:GND") (at 20 270 0) (unit 1)
+    (property "Reference" "#PWR02" (at 18 268 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Value" "GND" (at 20 272 0) (effects (font (size 1.27 1.27))))
+  )
+
+  (symbol (lib_id "power:+3.3V") (at 150 30 0) (unit 1)
+    (property "Reference" "#PWR03" (at 152 28 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Value" "+3.3V" (at 150 28 0) (effects (font (size 1.27 1.27))))
+  )
+
+  (symbol (lib_id "power:+5V") (at 100 30 0) (unit 1)
+    (property "Reference" "#PWR04" (at 102 28 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Value" "+5V" (at 100 28 0) (effects (font (size 1.27 1.27))))
+  )
+
+  ; Battery connector J8
+  (symbol (lib_id "Connector:Conn_01x02_Pin") (at 20 50 0) (unit 1)
+    (property "Reference" "J8" (at 20 44 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "BATTERY_JST" (at 20 56 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "2S LiPo 7.4V JST-XH connector" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; Arming switch SW1
+  (symbol (lib_id "Switch:SW_SPST") (at 40 50 0) (unit 1)
+    (property "Reference" "SW1" (at 40 44 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "ARM_SW" (at 40 56 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Button_Switch_THT:SW_CuK_OS102011MA1QN1_SPDT_Angled" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Arming switch 5A rated series safety interlock" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; Q1 - P-ch MOSFET reverse polarity protection
+  (symbol (lib_id "Device:Q_PMOS_GDS") (at 60 55 0) (unit 1)
+    (property "Reference" "Q1" (at 64 48 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "AO3401" (at 64 56 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "P-ch MOSFET reverse polarity protection Vds=-30V Id=-4A" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "MPN" "AO3401A" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; R12 - Q1 gate pull-up 100k to VBAT
+  (symbol (lib_id "Device:R") (at 55 48 0) (unit 1)
+    (property "Reference" "R12" (at 58 44 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100k" (at 58 48 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "P-ch gate pull-up forces off at no-battery" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; U2 - MP1584 Buck Converter 5V
+  (symbol (lib_id "Regulator_Switching:MP1584") (at 90 80 0) (unit 1)
+    (property "Reference" "U2" (at 90 68 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "MP1584" (at 90 90 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "3A 28V step-down converter switching freq 300kHz" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "MPN" "MP1584EN" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Datasheet" "https://www.monolithicpower.com/en/mp1584.html" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; L1 - Inductor 4.7uH
+  (symbol (lib_id "Device:L") (at 120 80 0) (unit 1)
+    (property "Reference" "L1" (at 124 76 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "4.7uH_3A" (at 124 82 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Inductor_SMD:L_Bourns_SRR1260" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "4.7uH 3A shielded power inductor Bourns SRR1260-4R7Y" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "MPN" "SRR1260-4R7Y" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; C1 - MP1584 input bulk 47uF
+  (symbol (lib_id "Device:CP") (at 80 90 270) (unit 1)
+    (property "Reference" "C1" (at 76 86 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "47uF_16V" (at 84 86 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:CP_Elec_6.3x7.7" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Input bulk electrolytic MP1584 min 10V rating" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; C2 - MP1584 input ceramic 10uF
+  (symbol (lib_id "Device:C") (at 85 90 270) (unit 1)
+    (property "Reference" "C2" (at 81 86 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "10uF_X7R" (at 89 86 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Input decoupling ceramic X7R 10uF 16V 0805" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; C3 - MP1584 output bulk 47uF
+  (symbol (lib_id "Device:CP") (at 135 90 270) (unit 1)
+    (property "Reference" "C3" (at 131 86 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "47uF_10V" (at 139 86 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:CP_Elec_6.3x7.7" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Output bulk electrolytic reduces ripple below 20mV" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; C4 - MP1584 output ceramic 22uF
+  (symbol (lib_id "Device:C") (at 140 90 270) (unit 1)
+    (property "Reference" "C4" (at 136 86 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "22uF_X7R" (at 144 86 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Output ceramic X7R 22uF 10V" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; R13, R14 - MP1584 feedback divider
+  (symbol (lib_id "Device:R") (at 110 95 0) (unit 1)
+    (property "Reference" "R13" (at 114 91 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100k" (at 114 95 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "FB upper resistor Vout=0.8*(1+R13/R14) R14=82k gives 5.0V" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:R") (at 110 105 0) (unit 1)
+    (property "Reference" "R14" (at 114 101 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "82k" (at 114 105 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "FB lower resistor to GND" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; U3 - AMS1117-3.3 LDO
+  (symbol (lib_id "Regulator_Linear:AMS1117-3.3") (at 160 80 0) (unit 1)
+    (property "Reference" "U3" (at 160 72 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "AMS1117-3.3" (at 160 88 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "1A LDO 3.3V low dropout regulator SOT-223" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "MPN" "AMS1117-3.3" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; C5 LDO input 10uF electrolytic
+  (symbol (lib_id "Device:CP") (at 155 90 270) (unit 1)
+    (property "Reference" "C5" (at 151 86 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "10uF_10V" (at 159 86 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:CP_Elec_5x5.4" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "AMS1117 input stabilisation electrolytic" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; C6 LDO output 10uF electrolytic  
+  (symbol (lib_id "Device:CP") (at 170 90 270) (unit 1)
+    (property "Reference" "C6" (at 166 86 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "10uF_10V" (at 174 86 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:CP_Elec_5x5.4" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "AMS1117 output stability required by datasheet" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; C24 Servo rail bulk 470uF
+  (symbol (lib_id "Device:CP") (at 195 145 270) (unit 1)
+    (property "Reference" "C24" (at 191 141 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "470uF_10V" (at 199 141 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:CP_Elec_10x10.5" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Servo rail bulk cap prevents brownout at servo inrush peak >2A" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; ---- ESP32 CORE ----
+  (text "ESP32 CORE" (at 215 25 0) (effects (font (size 2 2) (bold yes))))
+
+  (symbol (lib_id "ESP32_WROOM_32D") (at 260 100 0) (unit 1)
+    (property "Reference" "U1" (at 260 58 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "ESP32-WROOM-32D" (at 260 62 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "RF_Module:ESP32-WROOM-32" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "ESP32 WiFi+BT module 4MB flash integrated antenna" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "MPN" "ESP32-WROOM-32D" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; ESP32 decoupling
+  (symbol (lib_id "Device:C") (at 222 75 270) (unit 1)
+    (property "Reference" "C7" (at 218 71 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF" (at 226 71 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "ESP32 3V3 decoupling place within 0.5mm of pin" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:CP") (at 228 75 270) (unit 1)
+    (property "Reference" "C8" (at 224 71 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "10uF" (at 232 71 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:CP_Elec_5x5.4" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "ESP32 3V3 bulk decoupling" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; EN reset circuit
+  (symbol (lib_id "Device:R") (at 222 85 0) (unit 1)
+    (property "Reference" "R3" (at 226 81 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "10k" (at 226 85 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "EN pull-up to 3.3V" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:C") (at 216 90 270) (unit 1)
+    (property "Reference" "C23" (at 212 86 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF" (at 220 86 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "EN RC ensures clean power-on reset avoids boot loop" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:SW_Push") (at 216 95 0) (unit 1)
+    (property "Reference" "SW2" (at 216 91 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "RESET" (at 216 99 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Button_Switch_SMD:SW_SPST_CK_RS282G05A3" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; GPIO0 boot circuit
+  (symbol (lib_id "Device:R") (at 222 108 0) (unit 1)
+    (property "Reference" "R4" (at 226 104 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "10k" (at 226 108 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "GPIO0 pull-up HIGH=normal boot LOW=download mode" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:SW_Push") (at 216 113 0) (unit 1)
+    (property "Reference" "SW3" (at 216 109 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "BOOT" (at 216 117 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Button_Switch_SMD:SW_SPST_CK_RS282G05A3" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; ---- I2C SENSORS ----
+  (text "I2C SENSOR BUS" (at 215 125 0) (effects (font (size 2 2) (bold yes))))
+
+  ; I2C pull-ups
+  (symbol (lib_id "Device:R") (at 222 138 0) (unit 1)
+    (property "Reference" "R1" (at 226 134 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "4k7" (at 226 138 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "I2C SDA pull-up 4.7k at 400kHz with 100pF bus cap rise time ~470ns" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:R") (at 222 143 0) (unit 1)
+    (property "Reference" "R2" (at 226 139 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "4k7" (at 226 143 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "I2C SCL pull-up" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; U4 MPU-6050
+  (symbol (lib_id "Sensor_Motion:MPU-6050") (at 260 150 0) (unit 1)
+    (property "Reference" "U4" (at 260 138 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "MPU-6050" (at 260 162 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_LGA:LGA-24_4x4mm_P0.5mm" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "6-axis IMU accel+gyro I2C addr 0x68 AD0=LOW" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "MPN" "MPU-6050" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:C") (at 242 155 270) (unit 1)
+    (property "Reference" "C9" (at 238 151 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF" (at 246 151 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "MPU6050 VCC decoupling" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; U5 BMP280
+  (symbol (lib_id "Sensor_Pressure:BMP280") (at 310 150 0) (unit 1)
+    (property "Reference" "U5" (at 310 138 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "BMP280" (at 310 162 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_LGA:Bosch_LGA-8_2x2.5mm_P0.65mm" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Barometric pressure sensor I2C addr 0x76 SDO=LOW CSB=HIGH" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "MPN" "BMP280" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:C") (at 296 155 270) (unit 1)
+    (property "Reference" "C10" (at 292 151 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF" (at 300 151 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "BMP280 VDD decoupling" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; U6 MS5611 (DNP)
+  (symbol (lib_id "Sensor_Pressure:MS5611-01BA03") (at 360 150 0) (unit 1)
+    (property "Reference" "U6" (at 360 138 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "MS5611_DNP" (at 360 162 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_LCC:CLCC-8" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Secondary barometer DNP optional I2C addr 0x77 PS=HIGH" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "MPN" "MS5611-01BA03" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:C") (at 346 155 270) (unit 1)
+    (property "Reference" "C11" (at 342 151 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF" (at 350 151 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "MS5611 VDD decoupling" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; ---- SPI PERIPHERALS ----
+  (text "SPI BUS + UART" (at 400 25 0) (effects (font (size 2 2) (bold yes))))
+
+  ; SPI series resistors (damping)
+  (symbol (lib_id "Device:R") (at 400 40 0) (unit 1)
+    (property "Reference" "R19" (at 404 36 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "33R" (at 404 40 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "SCK damping resistor at ESP32 end limits Ciss charge spike" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:R") (at 400 46 0) (unit 1)
+    (property "Reference" "R20" (at 404 42 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "33R" (at 404 46 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "MOSI damping resistor" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; U7 SX1278 LoRa
+  (symbol (lib_id "RF_Module:RFM95W-915S2") (at 450 60 0) (unit 1)
+    (property "Reference" "U7" (at 450 40 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "SX1278_LoRa" (at 450 80 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "RF_Module:HOPERF_RFM9XW_THT" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "SX1278 LoRa module 433/915MHz SPI NSS=GPIO5 DIO0=GPIO4" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "MPN" "Ra-02 or RFM95W" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:C") (at 432 65 270) (unit 1)
+    (property "Reference" "C12" (at 428 61 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF" (at 436 61 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "LoRa VCC decoupling" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:C") (at 438 65 270) (unit 1)
+    (property "Reference" "C13" (at 434 61 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "10uF" (at 442 61 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "LoRa VCC bulk 10uF handles TX current spike ~120mA" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; SD1 MicroSD
+  (symbol (lib_id "Device:SD_Card") (at 450 110 0) (unit 1)
+    (property "Reference" "SD1" (at 450 96 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "MicroSD_SPI" (at 450 124 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Connector_Card:microSD_HC_Hirose_DM3AT-SF-PEJM5" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "MicroSD push-push socket SPI mode CS=GPIO15 3.3V native" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:C") (at 432 115 270) (unit 1)
+    (property "Reference" "C14" (at 428 111 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF" (at 436 111 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "SD VCC decoupling" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; R21, R22 SD CS + GPIO15 pull-up
+  (symbol (lib_id "Device:R") (at 410 106 0) (unit 1)
+    (property "Reference" "R21" (at 414 102 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100k" (at 414 106 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "SD CS pull-up ensures GPIO15 HIGH at boot satisfies boot requirement" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; U8 NEO-8M GPS
+  (symbol (lib_id "RF_GPS:u-blox_NEO-8M") (at 450 155 0) (unit 1)
+    (property "Reference" "U8" (at 450 140 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "NEO-8M" (at 450 172 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "RF_GPS:u-blox_NEO-M8_Exposed_Pad_22.4x16.2_THT-Antenna" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "u-blox NEO-8M GPS UART2 RX=GPIO16 TX=GPIO17 9600baud" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "MPN" "NEO-8M-0" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:C") (at 432 160 270) (unit 1)
+    (property "Reference" "C15" (at 428 156 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF" (at 436 156 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "GPS VCC decoupling" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; ---- PYRO DEPLOYMENT ----
+  (text "PYRO DEPLOYMENT" (at 400 185 0) (effects (font (size 2 2) (bold yes))))
+  (text "WARNING: Gate pull-downs R7/R8 are SAFETY CRITICAL.\nAlways verify 0V at gate before handling igniters." (at 400 192 0)
+    (effects (font (size 1.27 1.27)) (justify left) (color 200 0 0)))
+
+  ; Q2 - Pyro Ch A IRLZ44N
+  (symbol (lib_id "Device:Q_NMOS_GDS") (at 430 215 0) (unit 1)
+    (property "Reference" "Q2" (at 434 207 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "IRLZ44N" (at 434 215 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Logic-level N-ch MOSFET Vgs_th=1-2V Id=50A Ron=22mOhm Pyro ch A" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "MPN" "IRLZ44NPBF" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:R") (at 415 215 0) (unit 1)
+    (property "Reference" "R5" (at 419 211 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100R" (at 419 215 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Gate resistor limits Ciss charge current protects GPIO from capacitive spike" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:R") (at 421 222 90) (unit 1)
+    (property "Reference" "R7" (at 417 222 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "10k" (at 425 222 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Gate pull-down SAFETY CRITICAL holds gate LOW during power-on boot undefined GPIO" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Connector:Screw_Terminal_01x02") (at 470 208 0) (unit 1)
+    (property "Reference" "J5" (at 470 202 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "PYRO_A" (at 470 216 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Connector_Phoenix_MC_HighVoltage:PhoenixContact_MC_1,5_2-ST-3,5_1x02_P3.50mm_Angled" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Screw terminal parachute igniter channel A 2-pos 3.5mm" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; Continuity LED ch A
+  (symbol (lib_id "Device:LED") (at 460 200 0) (unit 1)
+    (property "Reference" "LED4" (at 460 196 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "CONT_A" (at 460 204 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "LED_SMD:LED_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Continuity indicator illuminates if igniter present and intact" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:R") (at 452 200 0) (unit 1)
+    (property "Reference" "R9" (at 456 196 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "1k" (at 456 200 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Continuity current limit 1k gives ~1.3mA well below igniter no-fire 50mA" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; Q3 - Pyro Ch B IRLZ44N
+  (symbol (lib_id "Device:Q_NMOS_GDS") (at 430 250 0) (unit 1)
+    (property "Reference" "Q3" (at 434 242 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "IRLZ44N" (at 434 250 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Logic-level N-ch MOSFET Pyro ch B" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "MPN" "IRLZ44NPBF" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:R") (at 415 250 0) (unit 1)
+    (property "Reference" "R6" (at 419 246 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100R" (at 419 250 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Gate resistor Ch B" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:R") (at 421 257 90) (unit 1)
+    (property "Reference" "R8" (at 417 257 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "10k" (at 425 257 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Gate pull-down Ch B SAFETY CRITICAL" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Connector:Screw_Terminal_01x02") (at 470 243 0) (unit 1)
+    (property "Reference" "J6" (at 470 237 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "PYRO_B" (at 470 251 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Connector_Phoenix_MC_HighVoltage:PhoenixContact_MC_1,5_2-ST-3,5_1x02_P3.50mm_Angled" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Screw terminal parachute igniter channel B" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:LED") (at 460 235 0) (unit 1)
+    (property "Reference" "LED5" (at 460 231 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "CONT_B" (at 460 239 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "LED_SMD:LED_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Continuity indicator channel B" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:R") (at 452 235 0) (unit 1)
+    (property "Reference" "R10" (at 456 231 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "1k" (at 456 235 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Continuity current limit Ch B" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; ---- SERVO OUTPUTS ----
+  (text "SERVO OUTPUTS" (at 10 310 0) (effects (font (size 2 2) (bold yes))))
+
+  (symbol (lib_id "Connector:Conn_01x03_Pin") (at 30 330 0) (unit 1)
+    (property "Reference" "J1" (at 30 322 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "SERVO1" (at 30 340 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Servo 1 SIG=GPIO25 50Hz PWM 1-2ms pulse" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Connector:Conn_01x03_Pin") (at 55 330 0) (unit 1)
+    (property "Reference" "J2" (at 55 322 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "SERVO2" (at 55 340 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Servo 2 SIG=GPIO26" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Connector:Conn_01x03_Pin") (at 80 330 0) (unit 1)
+    (property "Reference" "J3" (at 80 322 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "SERVO3" (at 80 340 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Servo 3 SIG=GPIO27" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Connector:Conn_01x03_Pin") (at 105 330 0) (unit 1)
+    (property "Reference" "J4" (at 105 322 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "SERVO4" (at 105 340 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Servo 4 SIG=GPIO14 note pull-up at boot verify servo safe" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; Servo decoupling
+  (symbol (lib_id "Device:C") (at 16 340 270) (unit 1)
+    (property "Reference" "C25" (at 12 336 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "100nF" (at 20 336 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Per-header servo decoupling" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; ---- UI + BUZZER ----
+  (text "UI & PROGRAMMING" (at 215 310 0) (effects (font (size 2 2) (bold yes))))
+
+  ; Buzzer
+  (symbol (lib_id "Device:Buzzer") (at 240 335 0) (unit 1)
+    (property "Reference" "BZ1" (at 240 327 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "BUZZER_5V" (at 240 343 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Buzzer_Beeper:CUI_CEB-35D3" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Active piezo buzzer 3-5V 5mA self-oscillating" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:Q_NPN_BCE") (at 230 342 0) (unit 1)
+    (property "Reference" "Q4" (at 234 337 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "MMBT2222" (at 234 343 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "NPN buzzer driver SOT-23 Vce=40V Ic=600mA" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:R") (at 222 342 0) (unit 1)
+    (property "Reference" "R18" (at 218 338 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "1k" (at 218 342 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Buzzer NPN base resistor GPIO13" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:D") (at 240 328 90) (unit 1)
+    (property "Reference" "D1" (at 236 328 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "1N4148" (at 244 328 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Diode_SMD:D_SOD-323" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Flyback diode suppresses inductive spike at buzzer turn-off" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; Status LEDs
+  (symbol (lib_id "Device:LED") (at 270 330 0) (unit 1)
+    (property "Reference" "LED1" (at 270 326 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "PWR_OK" (at 270 334 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "LED_SMD:LED_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Power good LED always on anode to 3.3V" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:R") (at 280 330 0) (unit 1)
+    (property "Reference" "R15" (at 284 326 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "330R" (at 284 330 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "LED current limit 330R gives ~10mA at 3.3V with Vf=1.8-2.1V" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:LED") (at 270 340 0) (unit 1)
+    (property "Reference" "LED2" (at 270 336 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "GPS_LOCK" (at 270 344 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "LED_SMD:LED_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "GPS lock status GPIO2" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:R") (at 280 340 0) (unit 1)
+    (property "Reference" "R16" (at 284 336 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "330R" (at 284 340 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:LED") (at 270 350 0) (unit 1)
+    (property "Reference" "LED3" (at 270 346 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "ARMED" (at 270 354 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "LED_SMD:LED_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "Armed status LED GPIO12 note LOW at boot" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  (symbol (lib_id "Device:R") (at 280 350 0) (unit 1)
+    (property "Reference" "R17" (at 284 346 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "330R" (at 284 350 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; Programming header
+  (symbol (lib_id "Connector:Conn_01x04_Pin") (at 240 368 0) (unit 1)
+    (property "Reference" "J7" (at 240 360 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "PROG_HEADER" (at 240 378 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+    (property "Description" "UART programming 4-pin GND/3V3/TX(GPIO1)/RX(GPIO3) use 3.3V adapter only" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  )
+
+  ; ---- WIRE CONNECTIONS (net labels) ----
+  (net_label (at 70 50 0) (fields_autoplaced) (property "Value" "VBAT_RAW" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 130 80 0) (fields_autoplaced) (property "Value" "+5V" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 145 80 0) (fields_autoplaced) (property "Value" "+5V_SERVO" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 175 80 0) (fields_autoplaced) (property "Value" "+3.3V" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 248 100 0) (fields_autoplaced) (property "Value" "+3.3V" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 248 150 0) (fields_autoplaced) (property "Value" "+3.3V" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 432 60 0) (fields_autoplaced) (property "Value" "+3.3V" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 432 110 0) (fields_autoplaced) (property "Value" "+3.3V" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 432 155 0) (fields_autoplaced) (property "Value" "+3.3V" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 16 328 0) (fields_autoplaced) (property "Value" "+5V_SERVO" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 190 145 0) (fields_autoplaced) (property "Value" "+5V_SERVO" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 400 215 0) (fields_autoplaced) (property "Value" "PYRO_A_GATE" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 400 250 0) (fields_autoplaced) (property "Value" "PYRO_B_GATE" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 248 97 0) (fields_autoplaced) (property "Value" "I2C_SDA" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 248 94 0) (fields_autoplaced) (property "Value" "I2C_SCL" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 395 40 0) (fields_autoplaced) (property "Value" "SPI_SCK" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 395 46 0) (fields_autoplaced) (property "Value" "SPI_MOSI" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 395 43 0) (fields_autoplaced) (property "Value" "SPI_MISO" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 395 50 0) (fields_autoplaced) (property "Value" "LORA_CS" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 395 106 0) (fields_autoplaced) (property "Value" "SD_CS" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 395 155 0) (fields_autoplaced) (property "Value" "GPS_TX" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 395 160 0) (fields_autoplaced) (property "Value" "GPS_RX" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 215 342 0) (fields_autoplaced) (property "Value" "BUZZER_CTRL" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+  (net_label (at 263 330 0) (fields_autoplaced) (property "Value" "+3.3V" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+
+  ; VBAT pyro bus
+  (net_label (at 445 200 0) (fields_autoplaced) (property "Value" "PYRO_BUS_P" (at 0 0 0) (effects (font (size 1.27 1.27)) (justify left))))
+
+)
